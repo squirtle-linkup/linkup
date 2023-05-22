@@ -1,8 +1,3 @@
-// HomePage.module.scss
-
-@import '../variables.scss';
-@import '../ReusableComp/button.scss';
-
 .homePage {
   display: flex;
   flex-direction: column;
@@ -14,7 +9,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: $color-header;
 
     h1 {
       font-size: 4rem;
