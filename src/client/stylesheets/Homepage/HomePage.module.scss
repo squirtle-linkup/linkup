@@ -1,0 +1,57 @@
+// HomePage.module.scss
+
+@import '../variables.scss';
+@import '../ReusableComp/button.scss';
+
+.homePage {
+  display: flex;
+  flex-direction: column;
+  color: $color-light;
+  text-align: center;
+
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $color-header;
+
+    h1 {
+      font-size: 4rem;
+      color: $color-h1;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: $color-h2;
+    }
+  }
+
+  .wrapperdiv {
+    display: flex;
+    flex-direction: row;
+    align-items:normal;
+    background-color: $color-article-bg;
+    // border: 1px solid red;
+    padding: 2rem;
+    text-align: center;
+
+    .description {
+      padding: 0 4rem;
+      border-radius: 0.5rem;
+      text-align:left;
+
+      h1 {
+        font-size: 2rem;
+        color: $color-article-header;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 1rem;
+        color: $color-article-text;
+        line-height: 1.5;
+      }
+    }
+  }
+}

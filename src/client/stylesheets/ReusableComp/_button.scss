@@ -1,0 +1,16 @@
+// button.scss
+
+.btn {
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: $color-secondary;
+  color: $color-dark;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: lighten($color-secondary, 10%);
+  }
+}
