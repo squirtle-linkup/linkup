@@ -21,8 +21,11 @@
 
     img {
       width: 10rem;
-      border: 0.1rem solid $color-border-focus;
-      border-radius: 0.5rem;
+      height: 10rem;
+      object-fit: cover;
+      overflow: hidden;
+      border: 0.1rem solid lighten($color-border, 45%);
+      border-radius: 50%;
     }
   }
 
@@ -40,7 +43,7 @@
     button {
       width: 10rem;
       font-size: 1.5rem;
-      background-color: $color-button-green;
+      background-color: lighten($color-border, 45%);
     }
   }
 

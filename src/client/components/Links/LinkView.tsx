@@ -58,7 +58,7 @@ const LinkView = () => {
           <p className={styles.linkUrl}>phone #:</p>
         </div>
         <div className={styles.image}>
-          <img src="/src/client/assets/biden.jpg" max-width="2rem" alt="link image"/>
+          <img src="/src/client/assets/biden.jpg" alt="link image"/>
         </div>
       </div>
       <div className={styles.linkUp}>
