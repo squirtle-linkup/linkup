@@ -31,7 +31,7 @@ app.use('/api/users', userRouter);
 app.use((req, res) => res.status(404).send('404: Page not found UNKNOWN ROUTE HANDLER'));
 
 // GLOBAL ERROR HANDLER
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
   const defaultErr = {
     log: 'Express error handler caught unknown middleware error',
     status: 500,
@@ -39,7 +39,7 @@ app.use((err, req, res) => {
   }
   const errorObj = Object.assign({}, defaultErr, err);
   console.log(errorObj.log);
-  return res.status(errorObj.status).json(errorObj.message);
+  return res.status(errorObj.status).send(errorObj.message.err);
 });
 
 

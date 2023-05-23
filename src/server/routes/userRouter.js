@@ -5,6 +5,7 @@ import { userController } from '../controllers/userController.js';
 const userRouter = express.Router();
 
 userRouter.post('/register',
+  userController.duplicateUserCheck,
   userController.registerUser,
   userController.newConnTable,
   (req, res) => {
@@ -32,11 +33,13 @@ userRouter.post('/register',
 
 // Create new user LinkUp connection
 // userRouter.post('/newLink',
-//     userConrtoller.newLink,
+//     userController.newLink,
 //     (req, res) => {
 //         console.log(`We've created a new link!`)
 //         return res.status(200).json(res.locals.user);
 //     }
 // );
+
+
 
 export default userRouter;
