@@ -7,20 +7,20 @@ const Register = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // grab the name, username, email and password from the form
-    const displayname = e.currentTarget.displayname.value;
     const username = e.currentTarget.username.value;
     const email = e.currentTarget.email.value;
     const password = e.currentTarget.password.value;
-    if (!username || !password || !email || !displayname) {
+    console.log( username, email, password)
+    if (!username || !password || !email) {
       setError("Fill complete all fields");
     } else {
       // "Post" fetch request to the server with the username, email and password in the body
-      fetch('/register', {
+      fetch('api/users/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ name, username, email, password })
+        body: JSON.stringify({ username, email, password })
       })
       .then(res => res.json())
       .then(data => {
@@ -41,7 +41,6 @@ const Register = () => {
     <div className={ styles.register }>
       <form onSubmit={ handleSubmit }>
         <h1>Register Now!</h1>
-        <input className={styles.displayName} type="text" name="displayname" placeholder="display name"/>
         <input className={styles.username} type="text" name="username" placeholder="username"/>
         <input className={styles.email} type="text" name="email" placeholder="email"/>
         <input className={styles.password} type="password" name="password" placeholder="password"/>
