@@ -7,12 +7,12 @@ const Register = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // grab the name, username, email and password from the form
-    const name = e.currentTarget.displayName.value;
+    const displayname = e.currentTarget.displayname.value;
     const username = e.currentTarget.username.value;
     const email = e.currentTarget.email.value;
     const password = e.currentTarget.password.value;
-    if (!username || !password || !email || !name) {
-      setError("Please enter a valid username and password");
+    if (!username || !password || !email || !displayname) {
+      setError("Fill complete all fields");
     } else {
       // "Post" fetch request to the server with the username, email and password in the body
       fetch('/register', {
@@ -45,9 +45,8 @@ const Register = () => {
         <input className={styles.username} type="text" name="username" placeholder="username"/>
         <input className={styles.email} type="text" name="email" placeholder="email"/>
         <input className={styles.password} type="password" name="password" placeholder="password"/>
-        <button className={styles.loginButton}>Register</button>
+        <button className={styles.loginButton} type="submit">Register</button>
         {error && <p className={styles.error}>{ error }</p>}
-
       </form>
     </div>
   )
