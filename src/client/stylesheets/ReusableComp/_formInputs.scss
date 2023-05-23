@@ -1,0 +1,14 @@
+@mixin formInputs {
+  font-size: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 0.1rem solid $color-border;
+  border-radius: 0.5rem;
+  outline: none;
+  background-color: $color-input-background;
+  color: $color-light;
+
+  &:focus {
+    border-color: $color-border-focus;
+  }
+}
