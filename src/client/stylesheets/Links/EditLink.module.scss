@@ -1,0 +1,21 @@
+.editLink {
+    display: flex;
+    flex-direction: column;
+    background-color: $color-dark;
+  
+    .form {
+      @include formStyle;
+      .archiveButton {
+        @include archiveBtn;
+      }
+      .deleteButton {
+        @include deleteBtn;
+      }
+    }
+    
+    .error {
+      color: $color-error;
+      margin-top: 1rem;
+      text-align: center;
+    }
+  }

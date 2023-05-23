@@ -1,6 +1,7 @@
 import Login from './Login';
 import Register from './Register';
 import NewLink from '../Links/NewLink';
+import EditLink from '../Links/EditLink';
 import styles from '../../stylesheets/Homepage/HomePage.module.scss';
 
 const HomePage = () => {
@@ -20,6 +21,7 @@ const HomePage = () => {
         < Register />
       </div>
       < NewLink />
+      < EditLink />
     </div>
   )
 }
