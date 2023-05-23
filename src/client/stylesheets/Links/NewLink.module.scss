@@ -1,0 +1,15 @@
+.newLink {
+  display: flex;
+  flex-direction: column;
+  background-color: $color-dark;
+
+  .form {
+    @include formStyle;
+  }
+  
+  .error {
+    color: $color-error;
+    margin-top: 1rem;
+    text-align: center;
+  }
+}

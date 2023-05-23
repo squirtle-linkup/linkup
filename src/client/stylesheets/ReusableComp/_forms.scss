@@ -18,6 +18,10 @@
     @include formInputs;
   }
 
+  textarea {
+    @include formInputs;
+  }
+
   button {
     @include btn;
   }
