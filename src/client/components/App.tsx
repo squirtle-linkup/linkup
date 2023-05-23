@@ -1,6 +1,6 @@
 import HomePage from './Homepage/HomePage'
 
-function App() {
+const App =() => {
 
   return (
     <div>
