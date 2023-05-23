@@ -47,7 +47,7 @@ const LinkView = () => {
   return (
     <div className={ styles.linkView }>
       <div className={styles.wrapper1}>
-        <button onClick={ handleBack }>Back</button>
+        <button onClick={ handleBack }>Save and Return</button>
         <button onClick={ handleEdit }>Edit</button>
       </div>
       <div className={styles.linkInformation}>
@@ -71,3 +71,6 @@ const LinkView = () => {
 }
 
 export default LinkView;
+
+// add unarchive button if the link's archive status is true
+  //then add the unarchive to the back button
