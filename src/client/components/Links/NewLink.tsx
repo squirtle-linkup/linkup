@@ -43,7 +43,7 @@ const NewLink = () => {
         <input className={styles.fullName} type="text" name="fullName" placeholder="📌 full name"/>
         <input className={styles.email} type="email" name="email" placeholder="email"/>
         <input className={styles.linkedin} type="text" name="linkedin" placeholder="linkedin url"/>
-        <input className={styles.phoneNumber} type="tel" name="phoneNumber" placeholder="phone number XXX-XXX-XXXX" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"/>
+        <input className={styles.phoneNumber} type="tel" name="phoneNumber" placeholder="phone number XXX-XXX-XXXX" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"/>
         {/* Stretch Feature: Add Image */}
         <input type="file" name="image" accept="image/*"/>
         <textarea className={styles.notes} name="notes" placeholder="notes" style={{height:"20rem"}}/>
