@@ -40,7 +40,7 @@ const Register = () => {
   return (
     <div className={ styles.register }>
       <form onSubmit={ handleSubmit }>
-        <h1>Sign Up Now!</h1>
+        <h1>Register Now!</h1>
         <input className={styles.displayName} type="text" name="displayname" placeholder="display name"/>
         <input className={styles.username} type="text" name="username" placeholder="username"/>
         <input className={styles.email} type="text" name="email" placeholder="email"/>
