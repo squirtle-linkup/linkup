@@ -13,7 +13,7 @@ const Login = () => {
       setError("Please enter a valid username and password");
     } else {
       // "Post" fetch request to the server with the username and password in the body
-      fetch('/login', {
+      fetch('/api/users/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

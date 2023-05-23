@@ -77,24 +77,24 @@ userController.newConnTable = (req, res, next) => {
 // WIP
 userController.loginUser = (req, res, next) => {
   console.log('We are logging in')
-  const { username, password} = req.body;
-  const queryString = `SELECT ${username}
-                       FROM users
-                       RETURNING user_id, password`;
+  const { username, password } = req.body;
+  const queryString = `SELECT username, password, user_id FROM users WHERE username='${username}'`;
 client.query(queryString)
   .then(data => {
-    if(password === data.password){
-      res.redirect('/dashboard');
+    console.log(data)
+    if(password === data.rows[0].password){
+      console.log('User is verified')
+      res.locals.user_id = data.rows[0].user_id;
+      // res.redirect('/dashboard');
       return next();
     } else {
       console.log(`User doesn't exist`);
       res.redirect('/register');
-      return next();
     }
   })
   .catch(() => {
     const err = {
-      log: 'An error occured in middleware loginuser while verifying the user within the database.',
+      log: 'An error occured in middleware loginUser while verifying the user within the database.',
       status: 500,
       message: { err: 'Error occured during login.'},
     }
@@ -105,17 +105,19 @@ client.query(queryString)
 userController.editLink = (req, res, next) => {
   const { user_id, connection_id, full_name, email, phone_number, linkedin, notes, linkups, archived } = req.body;
   const editQuery = `UPDATE connections_${user_id}
-                      SET full_name = ${full_name}
-                      email = ${email}
-                      phone_number = ${phone_number}
-                      linkedin = ${linkedin}
-                      notes = ${notes}
-                      linkups = ${linkups}
-                      archived = ${archived}
-                      WHERE connection_id = ${connection_id}`
+                      SET full_name='${full_name}',
+                      email='${email}',
+                      phone_number='${phone_number}',
+                      linkedin='${linkedin}',
+                      notes='${notes}',
+                      linkups=${linkups},
+                      archived=${archived}
+                      WHERE connection_id=${connection_id}
+                      RETURNING *`
   client.query(editQuery)
     .then((data) => {
       console.log(data);
+      res.locals.editDataArr = data.rows;
       return next();
     })
     .catch(() => {
@@ -128,41 +130,35 @@ userController.editLink = (req, res, next) => {
     });
 };
 
-// userController.getDashboard = (req, res, next) => {
-
-// };
+userController.getDashboard = (req, res, next) => {
+  const { user_id } = req.body;
+  const connectionsQuery = `SELECT * FROM connections_${user_id}`;
+  client.query(connectionsQuery)
+    .then((data) => {
+      console.log(data.rows);
+      res.locals.dashboardArr = data.rows;
+      return next();
+    })
+    .catch(() => {
+      const err = {
+        log: 'Error occured in middleware editLink in userController',
+        status: 500,
+        message: { err: 'Error occured while updating your links'},
+      };
+      return next(err);
+    })
+};
 
 //Have user input their user_id? Need to somehow grab user_id to get correct connection table
 userController.newLink = (req, res, next) => {
 console.log('Creating a new connection');
 //Deconstruct object to hold user input per relevant named column
-const { user_id, fullname, email, linkedin, phonenumber } = req.body;
-//Code to retrieve connection table related to user_id if user_id isn't given to us
-// const getConnectionTable = `SELECT username
-//                             FROM users
-//                             RETURNING user_id`;
-// client.query(getConnectionTable)
-//   .then(data => {
-//     //Store user_id value in res.locals
-//     res.locals.user_id = data;
-//     console.log(`This is the user id: ${res.locals.user_id}`);
-//     console.log(`Table retrieved to create a new link`);
-//     return next();
-//   })
-//   .catch(() => {
-//     const err = {
-//       log: 'An error occured in middleware newLink while retrieving the related user connections table.',
-//       status: 500,
-//       message: { err: 'Error occured during table retrieval.'},
-//     }
-//     return next(err);
-//   });
-//Code to create new connection within connection trable retrieved from related user_id
-const queryString = `INSERT INTO connections_${user_id} (fullname, email, linkedin, phonenumber)
-                     VALUES ('${fullname}', '${email}', '${linkedin}', '${phonenumber}')`;
+const { user_id, full_name, email, linkedin, phone_number } = req.body;
+const queryString = `INSERT INTO connections_${user_id} (full_name, email, linkedin, phone_number)
+                     VALUES ('${full_name}', '${email}', '${linkedin}', '${phone_number}')`;
 client.query(queryString)
   .then(data => {
-  res.locals.newconnection = data;
+  res.locals.newconnection = data.rows[0];
   console.log(res.locals.newconnection);
   console.log('Successfully added new connection');
   return next();
