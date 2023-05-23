@@ -1,0 +1,48 @@
+.linkView {
+  @include formStyle;
+  
+  .wrapper1{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  textarea {
+    margin: 1rem 0;
+  }
+
+  .linkInformation {
+    @include formInputs;
+    display: flex;
+    flex-direction: row;
+    margin: 1rem 0;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+
+    img {
+      width: 10rem;
+      border: 0.1rem solid $color-border-focus;
+      border-radius: 0.5rem;
+    }
+  }
+
+  .linkUp {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+
+    h2{
+      margin: 1rem;
+    }
+
+    button {
+      width: 10rem;
+      font-size: 1.5rem;
+      background-color: $color-button-green;
+    }
+  }
+
+
+}
