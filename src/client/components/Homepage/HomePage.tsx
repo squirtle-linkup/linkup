@@ -1,6 +1,6 @@
 import Login from './Login';
 import Register from './Register';
-import NewLink from '../NewLink';
+import NewLink from '../Links/NewLink';
 import styles from '../../stylesheets/Homepage/HomePage.module.scss';
 
 const HomePage = () => {

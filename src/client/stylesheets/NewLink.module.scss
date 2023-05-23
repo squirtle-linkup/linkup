@@ -1,9 +1,0 @@
-.newLink {
-  display: flex;
-  flex-direction: column;
-  background-color: $color-dark;
-
-  .form {
-    @include formStyle;
-  }
-}
