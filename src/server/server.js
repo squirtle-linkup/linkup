@@ -2,9 +2,17 @@ console.log('Hello from server.ts');
 import path from 'path';
 import express from 'express';
 import cookieParser from 'cookie-parser';
-// import userRouter from './routes/userRouter.js';
+import userRouter from './routes/userRouter.js';
+import pg from 'pg';
 
 const app = express();
+
+const pgURI = {connectionString: 'postgres://xbpddzdc:1KJaWjmsm5y1Tz7EWVn31SSM1UYBBb33@drona.db.elephantsql.com/xbpddzdc'}
+
+export const client = new pg.Client(pgURI);
+await client.connect()
+.then(console.log('connected to db'))
+.catch(() => console.log('something went wrong while connectting to db'))
 
 // PARSE ALL REQUEESTS
 app.use(express.json());
@@ -17,7 +25,7 @@ app.get('/', (req, res) => {
 })
 
 // // ROUTE HANDLERS
-// app.use('/api/users', userRouter);
+app.use('/api/users', userRouter);
 
 // UNKNOWN ROUTE HANDLER
 app.use((req, res) => res.status(404).send('404: Page not found UNKNOWN ROUTE HANDLER'));
@@ -40,3 +48,5 @@ const PORT = 8080;
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);
 });
+
+//export default client;
