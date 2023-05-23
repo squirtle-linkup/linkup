@@ -41,7 +41,7 @@ const Login = () => {
         <h1>Login</h1>
         <input className= {styles.username} type="text" name="username" placeholder="username"/>
         <input className={styles.password} type="password" name="password" placeholder="password"/>
-        <button className={styles.loginButton}>Login</button>
+        <button className={styles.loginButton} type="submit">Login</button>
         {error && <p className={styles.error}>{ error }</p>}
 
       </form>

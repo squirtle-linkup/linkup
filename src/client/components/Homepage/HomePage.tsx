@@ -1,9 +1,9 @@
 import Login from './Login';
 import Register from './Register';
+import NewLink from '../Links/NewLink';
 import styles from '../../stylesheets/Homepage/HomePage.module.scss';
 
-function HomePage() {
-
+const HomePage = () => {
   return (
     <div className={ styles.homePage }>
       <header>
@@ -19,6 +19,7 @@ function HomePage() {
       <div className={ styles.registration }>
         < Register />
       </div>
+      < NewLink />
     </div>
   )
 }

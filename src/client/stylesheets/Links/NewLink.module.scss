@@ -1,14 +1,12 @@
-
-.register {
+.newLink {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  background-color: $color-dark;
 
-  form {
+  .form {
     @include formStyle;
-    max-width: 100%;
   }
-
+  
   .error {
     color: $color-error;
     margin-top: 1rem;
