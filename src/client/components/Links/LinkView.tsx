@@ -31,7 +31,7 @@ const LinkView = () => {
   }
 
   const handleEdit = () => {
-    navigate('/editLink')
+    navigate('/linksEdit')
   }
 
   const handleLinkUp = () => {
