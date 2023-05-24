@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, createContext, useContext } from 'react';
+import { UserContext } from '../App';
 import styles from '../../stylesheets/Homepage/Login.module.scss';
+
 
 const Login = () => {
   const [error, setError] = useState<string>("");
+  const { setUserId } = useContext(UserContext);
+  
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -25,6 +29,7 @@ const Login = () => {
         if (data.error) {
           setError(data.error);
         } else {
+          setUserId(data.user_id);
           // redirect to the dashboard replace with react routers later!!
           window.location.href = '/dashboard';
         }
@@ -37,6 +42,7 @@ const Login = () => {
 
   return (
     <div className={ styles.login }>
+
       <form onSubmit={ handleSubmit }>
         <h1>Login</h1>
         <input className= {styles.username} type="text" name="username" placeholder="username"/>
