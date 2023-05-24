@@ -30,7 +30,8 @@ const Login = () => {
         } else {
           setUserId(data.user_id);
           // redirect to the dashboard replace with react routers later!!
-          window.location.href = '/dashboard';
+          // window.location.href = '/dashboard';
+          alert('wowowooww');
         }
       })
       .catch(err => {

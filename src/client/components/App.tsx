@@ -11,6 +11,7 @@ const App =() => {
     <UserContext.Provider value={ [userId, setUserId] }>
       < HomePage />
     </UserContext.Provider>
+  )
 }
 
 export default App
