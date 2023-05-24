@@ -2,9 +2,11 @@
     display: flex;
     flex-direction: column;
     background-color: $color-dark;
+    @include formStyle;
   
     .form {
-      @include formStyle;
+      display: flex;
+      flex-direction: column;
       .archiveButton {
         @include archiveBtn;
       }
