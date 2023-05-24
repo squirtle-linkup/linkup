@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from '../../stylesheets/Homepage/Register.module.scss';
 
 const Register = () => {
+  const navigate = useNavigate();
   const [error, setError] = useState<string>("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -28,7 +30,7 @@ const Register = () => {
           setError(data.error);
         } else {
           // redirect to the dashboard replace with react routers later!!
-          window.location.href = '/dashboard';
+          navigate('/dashboard')
         }
       })
       .catch(err => {

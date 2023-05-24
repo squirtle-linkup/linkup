@@ -1,9 +1,11 @@
 import React, { useState, createContext, useContext } from 'react';
 import { UserContext } from '../App';
+import { useNavigate } from 'react-router-dom';
 import styles from '../../stylesheets/Homepage/Login.module.scss';
 
 
 const Login = () => {
+  const navigate = useNavigate();
   const [error, setError] = useState<string>("");
   const [userId, setUserId] = useContext(UserContext);
   
@@ -28,10 +30,8 @@ const Login = () => {
         if (data.error) {
           setError(data.error);
         } else {
-          setUserId(data.user_id);
-          // redirect to the dashboard replace with react routers later!!
-          // window.location.href = '/dashboard';
-          alert('wowowooww');
+          // setUserId(data.user_id);
+          navigate('/dashboard')
         }
       })
       .catch(err => {

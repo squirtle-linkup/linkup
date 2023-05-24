@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from '../../stylesheets/Links/EditLink.module.scss';
 
 const EditLink = () => {
-    const [error, setError] = useState<string>("");
+  const navigate = useNavigate();
+  const [error, setError] = useState<string>("");
     
-    const handleChanges = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        const fullName = e.currentTarget.fullName.value;
-        const email = e.currentTarget.email.value;
-        const linkedin = e.currentTarget.linkedin.value;
-        const phoneNumber = e.currentTarget.phoneNumber.value;
-        if (!fullName) {
-            setError("Please complete all required fields");
-    } else {
+  const handleChanges = (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      const fullName = e.currentTarget.fullName.value;
+      const email = e.currentTarget.email.value;
+      const linkedin = e.currentTarget.linkedin.value;
+      const phoneNumber = e.currentTarget.phoneNumber.value;
+      if (!fullName) {
+        setError("Please complete all required fields");
+      } else {
         fetch('/editLink', {
             method: 'POST',
             headers: {
@@ -25,11 +27,11 @@ const EditLink = () => {
             if (data.error) {
                 setError(data.error);
             } else {
-                window.location.href = '/dashboard'
+              navigate('/links')
             }
         })
-    }
-};
+      }
+  };
 
 const handleArchive = () => {
     fetch('/editLink', {
@@ -59,6 +61,7 @@ const deleteLink = () => {
         .then(data => {
           console.log(data);
           // Redirect or perform additional actions after deleting the user
+          navigate('/dashboard')
         })
         .catch(error => {
           console.error(error);
