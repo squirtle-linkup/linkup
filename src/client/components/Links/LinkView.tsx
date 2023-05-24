@@ -54,10 +54,10 @@ const LinkView = () => {
       </div>
       <div className={styles.linkInformation}>
         <div className={styles.wrapper2}>
-          <h2 className={styles.linkName}>...name placeholder...</h2>
-          <p className={styles.linkUrl}>email:</p>
-          <p className={styles.linkUrl}>linkedin:</p>
-          <p className={styles.linkUrl}>phone #:</p>
+          <h2 className={styles.linkName}>Joe Biden</h2>
+          <p className={styles.linkUrl}>email: joebiden@whitehouse.org</p>
+          <p className={styles.linkUrl}>linkedin: https://www.linkedin.com/in/joebiden</p>
+          <p className={styles.linkUrl}>phone #: 111-111-1111</p>
         </div>
         <div className={styles.image}>
           <img src="/src/client/assets/biden.jpg" alt="link image"/>

@@ -73,11 +73,10 @@ const deleteLink = () => {
         <div className={ styles.editLink}>
             <form onSubmit={ handleChanges } className={styles.form}>
                 <h1> Edit Link</h1>
-                <p>Fields with 📌 are required</p>
-                <input className={styles.fullName} type="text" name="fullName" placeholder="📌 full name"/>
-                <input className={styles.email} type="email" name="email" placeholder="email"/>
-                <input className={styles.linkedin} type="text" name="linkedin" placeholder="linkedin url"/>
-                <input className={styles.phoneNumber} type="tel" name="phoneNumber" placeholder="phone number XXX-XXX-XXXX" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"/>
+                <input className={styles.fullName} type="text" name="fullName" placeholder="Joe Biden"/>
+                <input className={styles.email} type="email" name="email" placeholder="joebiden@whitehouse.org"/>
+                <input className={styles.linkedin} type="text" name="linkedin" placeholder="https://www.linkedin.com/in/joebiden"/>
+                <input className={styles.phoneNumber} type="tel" name="phoneNumber" placeholder="111-111-1111" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"/>
                 {/* Stretch Feature: Add Image */}
                 <input type="file" name="image" accept="image/*"/>
                 <button className={styles.submitButton}>Make Changes</button>

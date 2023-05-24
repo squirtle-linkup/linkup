@@ -7,6 +7,8 @@
 
   form {
     @include formStyle;
+    width: 25rem;
+
   }
 
   .error {
