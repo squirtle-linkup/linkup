@@ -5,10 +5,10 @@ type User = string | "null";
 export const UserContext = createContext<User>("null");
 
 const App =() => {
-  const [userid, setUserId] = useState<User>("null");
+  const [userId, setUserId] = useState<User>("null");
 
   return (
-    <UserContext.Provider value={{ setUserId }}>
+    <UserContext.Provider value={ [userId, setUserId] }>
       < HomePage />
     </UserContext.Provider>
 }

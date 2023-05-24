@@ -5,9 +5,8 @@ import styles from '../../stylesheets/Homepage/Login.module.scss';
 
 const Login = () => {
   const [error, setError] = useState<string>("");
-  const { setUserId } = useContext(UserContext);
+  const [userId, setUserId] = useContext(UserContext);
   
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // grab the username and password from the form
