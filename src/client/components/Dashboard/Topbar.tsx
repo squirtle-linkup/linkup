@@ -1,7 +1,9 @@
 import React from 'react';
 import styles from '../../stylesheets/Dashboard/Topbar.module.scss';
+import { useNavigate } from 'react-router-dom';
     const Topbar = () => {
-      
+      const navigate = useNavigate();
+
         return (
           <div className={ styles.topbar }>
             <div className= {styles.background }>
@@ -14,7 +16,7 @@ import styles from '../../stylesheets/Dashboard/Topbar.module.scss';
               </div>
               <div>
                 <h3>Today</h3>
-                <span><button>Joe Biden</button> &nbsp;&nbsp;</span>
+                <span><button onClick={() => navigate('/links')}>Joe Biden</button> &nbsp;&nbsp;</span>
               </div>
               <div>
                 <h3>Tomorrow</h3>
