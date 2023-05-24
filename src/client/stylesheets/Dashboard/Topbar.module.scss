@@ -4,7 +4,20 @@
     justify-content: center;
     @include formStyle;
     max-width: 100%;
-  
+    .background {
+        background: $color-form-background;
+        width: 100%;
+      }
+    .overDue {
+        color: $color-light-red;
+    }
+    .linkName {
+        color: $color-light-red
+    }
+    .anchor {
+        color:$color-border-focus;
+        font-size: 1.5em;
+    }
     .error {
       color: $color-error;
       margin-top: 1rem;
