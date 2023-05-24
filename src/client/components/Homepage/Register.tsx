@@ -1,26 +1,28 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from '../../stylesheets/Homepage/Register.module.scss';
 
 const Register = () => {
+  const navigate = useNavigate();
   const [error, setError] = useState<string>("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // grab the name, username, email and password from the form
-    const name = e.currentTarget.displayName.value;
     const username = e.currentTarget.username.value;
     const email = e.currentTarget.email.value;
     const password = e.currentTarget.password.value;
-    if (!username || !password || !email || !name) {
-      setError("Please enter a valid username and password");
+    console.log( username, email, password)
+    if (!username || !password || !email) {
+      setError("Fill complete all fields");
     } else {
       // "Post" fetch request to the server with the username, email and password in the body
-      fetch('/register', {
+      fetch('api/users/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ name, username, email, password })
+        body: JSON.stringify({ username, email, password })
       })
       .then(res => res.json())
       .then(data => {
@@ -28,7 +30,7 @@ const Register = () => {
           setError(data.error);
         } else {
           // redirect to the dashboard replace with react routers later!!
-          window.location.href = '/dashboard';
+          navigate('/dashboard')
         }
       })
       .catch(err => {
@@ -40,14 +42,12 @@ const Register = () => {
   return (
     <div className={ styles.register }>
       <form onSubmit={ handleSubmit }>
-        <h1>Sign Up Now!</h1>
-        <input className={styles.displayName} type="text" name="displayname" placeholder="display name"/>
+        <h1>Register Now!</h1>
         <input className={styles.username} type="text" name="username" placeholder="username"/>
         <input className={styles.email} type="text" name="email" placeholder="email"/>
         <input className={styles.password} type="password" name="password" placeholder="password"/>
-        <button className={styles.loginButton}>Register</button>
+        <button className={styles.loginButton} type="submit">Register</button>
         {error && <p className={styles.error}>{ error }</p>}
-
       </form>
     </div>
   )

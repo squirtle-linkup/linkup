@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, createContext, useContext } from 'react';
+import { UserContext } from '../App';
+import { useNavigate } from 'react-router-dom';
 import styles from '../../stylesheets/Homepage/Login.module.scss';
 
-const Login = () => {
-  const [error, setError] = useState<string>("");
 
+const Login = () => {
+  const navigate = useNavigate();
+  const [error, setError] = useState<string>("");
+  const [userId, setUserId] = useContext(UserContext);
+  
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // grab the username and password from the form
@@ -13,7 +18,7 @@ const Login = () => {
       setError("Please enter a valid username and password");
     } else {
       // "Post" fetch request to the server with the username and password in the body
-      fetch('/login', {
+      fetch('/api/users/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -25,8 +30,8 @@ const Login = () => {
         if (data.error) {
           setError(data.error);
         } else {
-          // redirect to the dashboard replace with react routers later!!
-          window.location.href = '/dashboard';
+          // setUserId(data.user_id);
+          navigate('/dashboard')
         }
       })
       .catch(err => {
@@ -37,11 +42,12 @@ const Login = () => {
 
   return (
     <div className={ styles.login }>
+
       <form onSubmit={ handleSubmit }>
         <h1>Login</h1>
         <input className= {styles.username} type="text" name="username" placeholder="username"/>
         <input className={styles.password} type="password" name="password" placeholder="password"/>
-        <button className={styles.loginButton}>Login</button>
+        <button className={styles.loginButton} type="submit">Login</button>
         {error && <p className={styles.error}>{ error }</p>}
 
       </form>

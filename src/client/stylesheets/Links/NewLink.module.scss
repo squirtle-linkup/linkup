@@ -1,16 +1,12 @@
-
-.login {
+.newLink {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  background-color: $color-dark;
 
-  form {
+  .form {
     @include formStyle;
-    width: 25rem;
-
   }
-
+  
   .error {
     color: $color-error;
     margin-top: 1rem;
