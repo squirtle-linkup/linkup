@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from '../../stylesheets/Links/LinkView.module.scss';
 
 const LinkView = () => {
+  const navigate = useNavigate();
   const [linkCount, setLinkCount] = useState(0);
   // Notes:
   //  1. We need to fetch the data for the specific person from the database
@@ -23,13 +25,13 @@ const LinkView = () => {
         console.log("error in LinkView handleBack", data.error)
       } else {
         // redirect to the dashboard replace with react routers later!!
-        window.location.href = '/dashboard';
+        navigate('/dashboard')
       }
     })
   }
 
   const handleEdit = () => {
-    window.location.href = '/editLink';
+    navigate('/editLink')
   }
 
   const handleLinkUp = () => {

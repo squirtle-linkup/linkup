@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from '../../stylesheets/Links/NewLink.module.scss';
 
 
 const NewLink = () => {
+  const navigate = useNavigate();
   const [error, setError] = useState<string>("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -30,7 +32,7 @@ const NewLink = () => {
           setError(data.error);
         } else {
           // redirect to the dashboard replace with react routers later!!
-          window.location.href = '/dashboard'; // Should Actually Redirect to the Person's Card After Creation
+          navigate('/links');
         }
       })
     }
