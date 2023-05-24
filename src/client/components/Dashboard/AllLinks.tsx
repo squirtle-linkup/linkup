@@ -21,12 +21,11 @@ const AllLinks = () => {
       <div className={styles.connection}>
 
     </div>
-      <button onClick={() => navigate('/links')}><p>name</p><img src="/src/client/assets/biden.jpg"/> </button>
-      <button onClick={() => navigate('/links')}><p>name</p><img src={getRandomImage()}/> </button>
-      <button onClick={() => navigate('/links')}><p>name</p><img src={getRandomImage()}/> </button>
-      <button onClick={() => navigate('/links')}><p>name</p><img src={getRandomImage()}/> </button>
-      <button onClick={() => navigate('/links')}><p>name</p><img src={getRandomImage()}/> </button>
-      <button onClick={() => navigate('/links')}><p>name</p><img src={getRandomImage()}/> </button>
+      <button onClick={() => navigate('/links')}><p>Alastair Scheuermann</p><img src={getRandomImage()}/> </button>
+      <button onClick={() => navigate('/links')}><p>Jake Gillan</p><img src={getRandomImage()}/> </button>
+      <button onClick={() => navigate('/links')}><p>Joe Biden</p><img src="/src/client/assets/biden.jpg"/> </button>
+      <button onClick={() => navigate('/links')}><p>Nicholas Ly</p><img src={getRandomImage()}/> </button>
+      <button onClick={() => navigate('/links')}><p>Eric Dunn</p><img src={getRandomImage()}/> </button>
     </div>
   )
 }
