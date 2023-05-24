@@ -6,9 +6,10 @@ export const userController = {};
 userController.duplicateUserCheck = (req, res, next) => {
   const { username } = req.body;
   const queryDuplicateUsername = `SELECT username FROM users WHERE username='${username}'`;
+  console.log(queryDuplicateUsername);
   client.query(queryDuplicateUsername)
     .then((data) => {
-      console.log(data.rows[0].username);
+      console.log(data);
       if (data.rows.length === 0) {
         return next();
       }
@@ -56,6 +57,7 @@ userController.newConnTable = (req, res, next) => {
                           linkedin VARCHAR,
                           notes VARCHAR,
                           linkups INT DEFAULT 0,
+                          date DATE DEFAULT CURRENT_DATE,
                           archived BOOL DEFAULT false
                         )`;
   client.query(connTableQuery)
@@ -103,13 +105,14 @@ client.query(queryString)
 };
 
 userController.editLink = (req, res, next) => {
-  const { user_id, connection_id, full_name, email, phone_number, linkedin, notes, linkups, archived } = req.body;
+  const { user_id, connection_id, full_name, email, phone_number, linkedin, notes, date, linkups, archived } = req.body;
   const editQuery = `UPDATE connections_${user_id}
                       SET full_name='${full_name}',
                       email='${email}',
                       phone_number='${phone_number}',
                       linkedin='${linkedin}',
                       notes='${notes}',
+                      date='${date}',
                       linkups=${linkups},
                       archived=${archived}
                       WHERE connection_id=${connection_id}
