@@ -1,0 +1,14 @@
+.topbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    @include formStyle;
+    max-width: 100%;
+  
+    .error {
+      color: $color-error;
+      margin-top: 1rem;
+      text-align: center;
+    }
+  }
+  
