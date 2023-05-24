@@ -14,31 +14,38 @@ userRouter.post('/register',
   }
 );
 
-// userRouter.post('/login',
-//   userController.loginUser,
-//   (req, res) => {
-//     console.log(`--> Sending data from userRouter.POST /login to client`)
-//     return res.status(200).json(res.locals.user);
-//   }
-// )
+userRouter.post('/login',
+  userController.loginUser,
+  (req, res) => {
+    console.log(`--> Sending data from userRouter.POST /login to client`)
+    return res.status(200).json(res.locals.user_id);
+  }
+)
 
 // To get user dashboard
-// userRouter.get('/dashboard',
-//     userController.getDashboard,
-//     (req, res) => {
-//         console.log(`We've retrieved the dashboard!`)
-//         return res.status(200).json(res.locals.user);
-//     }
-// );
+userRouter.get('/dashboard',
+    userController.getDashboard,
+    (req, res) => {
+        console.log(`We've retrieved the dashboard!`)
+        return res.status(200).json(res.locals.dashboardArr);
+    }
+);
 
 // Create new user LinkUp connection
-// userRouter.post('/newLink',
-//     userController.newLink,
-//     (req, res) => {
-//         console.log(`We've created a new link!`)
-//         return res.status(200).json(res.locals.user);
-//     }
-// );
+userRouter.post('/newLink',
+    userController.newLink,
+    (req, res) => {
+        console.log(`We've created a new link!`)
+        return res.status(200).json(res.locals.newconnection);
+    }
+);
+
+userRouter.post('/editLink',
+    userController.editLink,
+    (req, res) => {
+      return res.status(200).json(res.locals.editDataArr);
+    }
+)
 
 
 

@@ -1,12 +1,16 @@
-import HomePage from './Homepage/HomePage'
+import React, { createContext, useState } from 'react';
+import HomePage from './Homepage/HomePage';
+
+type User = string | "null";
+export const UserContext = createContext<User>("null");
 
 const App =() => {
+  const [userId, setUserId] = useState<User>("null");
 
   return (
-    <div>
+    <UserContext.Provider value={ [userId, setUserId] }>
       < HomePage />
-    </div>
-  )
+    </UserContext.Provider>
 }
 
 export default App
